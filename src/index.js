@@ -1,7 +1,7 @@
 import { Box, ChakraProvider, extendTheme } from '@chakra-ui/react';
 import React, { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Home';
 import SidebarWithHeader from './Components/SidebarWithHeader';
 import LargeWithAppLinksAndSocial from './Components/Footer';
@@ -12,28 +12,17 @@ import Support from './Components/Support';
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Home />,
-  },
-  {
-    path: '/FAQ/',
-    element: <FAQ />,
-  },
-  {
-    path: '/TOS/',
-    element: <TermsOfService />,
-  },
-  {
-    path: '/privacy-policy/',
-    element: <PrivacyPolicy />,
-  },
-  {
-    path: '/support/',
-    element: <Support />,
-  },
-]);
+const router = (
+  <Router>
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/FAQ/' element={<FAQ />} />
+      <Route path='/TOS/' element={<TermsOfService />} />
+      <Route path='/privacy-policy/' element={<PrivacyPolicy />} />
+      <Route path='/support/' element={<Support />} />
+    </Routes>
+  </Router>
+);
 const theme = extendTheme({
   styles: {
     global: {
@@ -46,12 +35,12 @@ const theme = extendTheme({
       },
     },
   },
-})
+});
 root.render(
   <StrictMode>
     <ChakraProvider theme={theme}>
       <SidebarWithHeader>
-        <RouterProvider router={router} />
+        {router}
         <Box pos='relative'>
           <LargeWithAppLinksAndSocial></LargeWithAppLinksAndSocial>
         </Box>
