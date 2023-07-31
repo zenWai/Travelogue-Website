@@ -15,6 +15,7 @@ import { SiAwesomelists, SiProbot } from 'react-icons/si';
 import { FcStackOfPhotos } from 'react-icons/fc';
 
 import hero from './assets/snapshot1.jpg';
+import Carousel from './Components/CarrousselImages';
 
 const Feature = ({ text, icon, iconBg }) => {
   return (
@@ -84,6 +85,7 @@ const Home = () => {
               iconBg={useColorModeValue('purple.100', 'purple.900')}
               text={'Your Story: Sort and Showcase'}
             />
+            <Carousel/>
           </Stack>
         </Stack>
         <Flex>
